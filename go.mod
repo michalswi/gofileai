@@ -1,4 +1,4 @@
-module github.com/michalswi/file-go-openai
+module github.com/michalswi/gofileai
 
 go 1.23.2
 

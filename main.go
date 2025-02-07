@@ -16,13 +16,13 @@ import (
 )
 
 const (
-	patternURL = "https://raw.githubusercontent.com/michalswi/file-go-openai/main/patterns/"
-	// patternURL = "https://raw.githubusercontent.com/michalswi/file-go-openai/dev/patterns/"
+	patternURL = "https://raw.githubusercontent.com/michalswi/gofileai/main/patterns/"
+	// patternURL = "https://raw.githubusercontent.com/michalswi/gofileai/dev/patterns/"
 	patternFile   = "pattern"
 	reviewFileExt = "_rev"
 	filePerm      = 0644
-	ragDataSource = "https://raw.githubusercontent.com/michalswi/file-go-openai/main/ragdata/"
-	// ragDataSource = "https://raw.githubusercontent.com/michalswi/file-go-openai/dev/ragdata/"
+	ragDataSource = "https://raw.githubusercontent.com/michalswi/gofileai/main/ragdata/"
+	// ragDataSource = "https://raw.githubusercontent.com/michalswi/gofileai/dev/ragdata/"
 )
 
 var ragKeywords = []string{"ai", "michalswi"}

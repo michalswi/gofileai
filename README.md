@@ -1,14 +1,14 @@
-# file-go-openai
+# gofileai
 
-![](https://img.shields.io/github/stars/michalswi/file-go-openai)
-![](https://img.shields.io/github/issues/michalswi/file-go-openai)
-![](https://img.shields.io/github/forks/michalswi/file-go-openai)
-![](https://img.shields.io/github/last-commit/michalswi/file-go-openai)
-![](https://img.shields.io/github/release/michalswi/file-go-openai)
+![](https://img.shields.io/github/stars/michalswi/gofileai)
+![](https://img.shields.io/github/issues/michalswi/gofileai)
+![](https://img.shields.io/github/forks/michalswi/gofileai)
+![](https://img.shields.io/github/last-commit/michalswi/gofileai)
+![](https://img.shields.io/github/release/michalswi/gofileai)
 
 ```
-$ ./file-go-openai -h
-Usage: ./file-go-openai [options]
+$ ./gofileai -h
+Usage: ./gofileai [options]
   -f string
     	Path to the file to be reviewed [required]
   -file string
@@ -34,10 +34,10 @@ Usage: ./file-go-openai [options]
 OpenAI default model version used **o1-mini** .  
 To use different model please refer to documentation [here](https://pkg.go.dev/github.com/sashabaranov/go-openai#pkg-constants) .
 ```
-$ ./file-go-openai -v
+$ ./gofileai -v
 o1-mini
 
-$ OPENAI_MODEL="o1-preview" ./file-go-openai -v
+$ OPENAI_MODEL="o1-preview" ./gofileai -v
 o1-preview
 ```
 
@@ -45,7 +45,7 @@ You need [OpenAI API key](https://platform.openai.com/api-keys) to interact with
 
 ```
 $ export API_KEY=<>
-$ ./file-go-openai (...)
+$ ./gofileai (...)
 ```
 
 
@@ -72,14 +72,14 @@ What are **tokens** and how to **count** them you can find [here](https://help.o
 
 #### > analyze and display review
 ```
-./file-go-openai \
+./gofileai \
 -f /tmp/input.log \
 -m "please list all uniq Request lines in one section and uniq User-Agent lines in separate section."
 ```
 
 #### > analyze and save review to a file
 ```
-./file-go-openai \
+./gofileai \
 -f /tmp/input.log \
 -m "please list all uniq Request lines in one section and uniq User-Agent lines in separate section." \
 -o
@@ -90,7 +90,7 @@ What are **tokens** and how to **count** them you can find [here](https://help.o
 Patterns can be find [here](./patterns/) .
 
 ```
-./file-go-openai \
+./gofileai \
 -f /tmp/input.log \
 -p analyze_requests_init \
 -o
@@ -103,7 +103,7 @@ Very simple RAG implementation. RAG files (.txt based) are [here](./ragdata/).
 ```
 > without 'rag'
 
-$ ./file-go-openai \
+$ ./gofileai \
 -f /tmp/input.log \
 -m "tell me more about michalswi in one sentence"
 OpenAI review started..
@@ -114,7 +114,7 @@ As of my knowledge cutoff in October 2023, there isn't widely available informat
 ```
 > with 'rag'
 
-$ ./file-go-openai \
+$ ./gofileai \
 -f /tmp/input.log \
 -m "tell me more about michalswi in one sentence" \
 --rag
