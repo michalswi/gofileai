@@ -6,14 +6,8 @@
 ![](https://img.shields.io/github/last-commit/michalswi/file-go-openai)
 ![](https://img.shields.io/github/release/michalswi/file-go-openai)
 
-OpenAI model version used **gpt-4o-mini**
-
-You need [OpenAI API key](https://platform.openai.com/api-keys) .
-
 ```
-export API_KEY=<>
-
-./file-go-openai -h
+$ ./file-go-openai -h
 Usage: ./file-go-openai [options]
   -f string
     	Path to the file to be reviewed [required]
@@ -36,6 +30,24 @@ Usage: ./file-go-openai [options]
   -version
     	Display OpenAI model version
 ```
+
+OpenAI default model version used **o1-mini** .  
+To use different model please refer to documentation [here](https://pkg.go.dev/github.com/sashabaranov/go-openai#pkg-constants) .
+```
+$ ./file-go-openai -v
+o1-mini
+
+$ OPENAI_MODEL="o1-preview" ./file-go-openai -v
+o1-preview
+```
+
+You need [OpenAI API key](https://platform.openai.com/api-keys) to interact with OpenAI API.
+
+```
+$ export API_KEY=<>
+$ ./file-go-openai (...)
+```
+
 
 ### **IMPORTANT**  
 

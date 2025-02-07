@@ -18,10 +18,7 @@ import (
 const (
 	patternURL = "https://raw.githubusercontent.com/michalswi/file-go-openai/main/patterns/"
 	// patternURL = "https://raw.githubusercontent.com/michalswi/file-go-openai/dev/patterns/"
-	patternFile = "pattern"
-	// https://pkg.go.dev/github.com/sashabaranov/go-openai#pkg-constants
-	openAImodel = openai.O1Mini
-	// openAImodel = openai.GPT4oMini
+	patternFile   = "pattern"
 	reviewFileExt = "_rev"
 	filePerm      = 0644
 	ragDataSource = "https://raw.githubusercontent.com/michalswi/file-go-openai/main/ragdata/"
@@ -29,6 +26,16 @@ const (
 )
 
 var ragKeywords = []string{"ai", "michalswi"}
+
+func getOpenAIModel() string {
+	model := os.Getenv("OPENAI_MODEL")
+	if model == "" {
+		// https://pkg.go.dev/github.com/sashabaranov/go-openai#pkg-constants
+		// model = openai.GPT4oMini
+		model = openai.O1Mini
+	}
+	return model
+}
 
 func main() {
 
@@ -39,6 +46,8 @@ func main() {
 	var inputQuery string
 	var oaiVersion bool
 	var useRAG bool
+
+	openAImodel := getOpenAIModel()
 
 	flag.StringVar(&filePath, "f", "", "Path to the file to be reviewed [required]")
 	flag.StringVar(&filePath, "file", "", "Path to the file to be reviewed [required]")
@@ -102,7 +111,7 @@ func main() {
 		inputQuery = fmt.Sprintf("%s\n\nAdditional Context:\n%s", inputQuery, ragData)
 	}
 
-	resp, err := getOpenAIResponse(apiKey, filePath, inputQuery)
+	resp, err := getOpenAIResponse(apiKey, filePath, inputQuery, openAImodel)
 	if err != nil {
 		log.Fatalf("OpenAI review failed: %v\n", err)
 	}
@@ -117,7 +126,7 @@ func main() {
 
 // getOpenAIResponse reads the content of the file at filePath and sends it
 // along with the message to the OpenAI API. It returns the API's response.
-func getOpenAIResponse(apiKey string, filePath string, message string) (resp openai.ChatCompletionResponse, err error) {
+func getOpenAIResponse(apiKey string, filePath string, message string, openAImodel string) (resp openai.ChatCompletionResponse, err error) {
 	content, err := os.ReadFile(filePath)
 	if err != nil {
 		log.Printf("Failed to read file: %v\n", err)
