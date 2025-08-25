@@ -16,13 +16,15 @@ import (
 )
 
 const (
-	patternURL = "https://raw.githubusercontent.com/michalswi/gofileai/main/patterns/"
+	// MAIN branch
+	patternURL    = "https://raw.githubusercontent.com/michalswi/gofileai/main/patterns/"
+	ragDataSource = "https://raw.githubusercontent.com/michalswi/gofileai/main/ragdata/"
+	// DEV branch
 	// patternURL = "https://raw.githubusercontent.com/michalswi/gofileai/dev/patterns/"
+	// ragDataSource = "https://raw.githubusercontent.com/michalswi/gofileai/dev/ragdata/"
 	patternFile   = "pattern"
 	reviewFileExt = "_rev"
 	filePerm      = 0644
-	ragDataSource = "https://raw.githubusercontent.com/michalswi/gofileai/main/ragdata/"
-	// ragDataSource = "https://raw.githubusercontent.com/michalswi/gofileai/dev/ragdata/"
 )
 
 var ragKeywords = []string{"ai", "michalswi"}
@@ -31,8 +33,7 @@ func getOpenAIModel() string {
 	model := os.Getenv("OPENAI_MODEL")
 	if model == "" {
 		// https://pkg.go.dev/github.com/sashabaranov/go-openai#pkg-constants
-		// model = openai.GPT4oMini
-		model = openai.O1Mini
+		model = openai.GPT5Mini
 	}
 	return model
 }
