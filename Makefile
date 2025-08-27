@@ -1,7 +1,7 @@
 GOLANG_VERSION := 1.23.2
 
 APP_NAME := gofileai
-APP_VERSION := 0.4.1
+APP_VERSION := 0.4.2
 
 .DEFAULT_GOAL := help
 .PHONY: build_mac build_linux
